@@ -29,11 +29,11 @@ closest_indices = dists.argsort()[:25]
 5. **"Unicorn" Prospect Finder** - Uses an isolation Forest to find statistical outliers by assigning each prospect an outlier score relative to the rest of the prospect pool.
 <img width="600" height="300" alt="Screenshot 2026-03-23 at 5 03 53 PM" src="https://github.com/user-attachments/assets/45492d11-ba25-4c61-951b-5ad0038b1b26" />
 
-#Necessary Installs
+# Necessary Installs
 -scikit-learn plotnine matplotlib seaborn scipy
 
-#Takeaways
-Recently aquired Brewers shortstop Jett Williams appeared both as Mike Trout's closest comparison and as one of 5 "Unicorn" outlier prospecHad he still been with the Mets I would've reccomended agressively targetig him in a trade just as the Brewers did. The three unicorn prospects that happened to be outside MLB's top 100 prospects were Pablo Aliendo, Cade Doughty, and Ethan Workinger. I would reccomend these three players as low risk, low, cost but high reward underated trade targets given their outlier tools and lack of hype. 
+# Takeaways
+-Recently aquired Brewers shortstop Jett Williams appeared both as Mike Trout's closest comparison and as one of 5 "Unicorn" outlier prospecHad he still been with the Mets I would've reccomended agressively targetig him in a trade just as the Brewers did. The three unicorn prospects that happened to be outside MLB's top 100 prospects were Pablo Aliendo, Cade Doughty, and Ethan Workinger. I would reccomend these three players as low risk, low, cost but high reward underated trade targets given their outlier tools and lack of hype. 
 
 ```
 
