@@ -131,6 +131,10 @@ Raw production tells you where a player sits today. It says nothing about which 
 
 The first method was K-Means. I scaled the features on the training careers only, chose the cluster count by silhouette score across a four-to-six range, and landed on four groups. A PCA projection down to two dimensions gave a fast visual read on how cleanly those groups separated.
 
+![PCA projection of the four minor-league hitter clusters](reports/figures/pca_clusters.png)
+
+*The four K-Means clusters projected onto the first two principal components.*
+
 The four archetypes, ordered by their training-set promotion rate (cluster numbers are arbitrary K-Means labels):
 
 | Cluster | Archetype | Promotion Rate | What defines it |
@@ -141,6 +145,10 @@ The four archetypes, ordered by their training-set promotion rate (cluster numbe
 | **1** | Glove-first, light bat | **41.0%** | Below-average across the offensive metrics |
 
 The breakdown makes baseball sense. The bats that already profile as big-league-ready, and the toolsy speed-and-contact players, get promoted at high rates. The developing-power and defense-first groups, whose value leans more on projection than current production, sit well below them.
+
+![Heatmap of cluster centroids across the hitting features](reports/figures/cluster_heatmap.png)
+
+*Centroid profile for each cluster. Red marks a feature sitting above the group average, blue below it.*
 
 ---
 
@@ -156,6 +164,14 @@ To check whether the structure holds up out of sample, the model scores a held-o
 
 The 63% deserves context rather than a victory lap. A chunk of the misses are not really misses. The model tags plenty of prospects as ready who have not been called up yet, and a good share of those are clearly big-league-caliber bats blocked by roster construction or simply too young to get the call. The score is flagging real talent that the call-up label has not caught up to. That is the readiness signal doing its job, even as it drags down the headline accuracy number.
 
+![Confusion matrix for call-up prediction at a 0.60 threshold](reports/figures/confusion_matrix.png)
+
+*Test-set call-up predictions at the 0.60 readiness threshold.*
+
+![ROC curve for the readiness score on held-out careers](reports/figures/roc_curve.png)
+
+*ROC curve for the readiness score on the held-out test careers.*
+
 ---
 
 ## 8. Finding Player Comparisons
@@ -169,6 +185,14 @@ To anchor the comps, I picked two established big leaguers as reference points a
 | **Mike Trout** | Jett Williams (Brewers), Jordan Lawlar (Diamondbacks) |
 | **Elvis Andrus** | Nick Morabito (Mets), Homer Bush Jr. (Padres) |
 
+![Dendrogram of the careers closest to Mike Trout](reports/figures/trout_dendrogram.png)
+
+*Ward dendrogram of the 25 careers nearest to Mike Trout.*
+
+![Dendrogram of the careers closest to Elvis Andrus](reports/figures/andrus_dendrogram.png)
+
+*Ward dendrogram of the 25 careers nearest to Elvis Andrus.*
+
 There is a built-in catch worth naming. When the anchor is an all-time talent like Trout, his nearest neighbors skew heavily toward other established big leaguers, which leaves only a handful of true minor-league comps in the mix. The method works better anchored against solid regulars than against superstars, and that is something I would want to design around in a future version.
 
 ---
@@ -176,6 +200,10 @@ There is a built-in catch worth naming. When the anchor is an all-time talent li
 ## 9. Hunting for Hidden Gems
 
 The last method went looking for prospects who fit no mold at all. An Isolation Forest scored every player on statistical uniqueness and flagged the most unusual 5%, which came to 134 players.
+
+![Isolation Forest uniqueness map of every hitter career](reports/figures/isolation_forest_map.png)
+
+*Every career projected by PCA and shaded by outlier score, with the most unusual profiles in red.*
 
 A raw outlier list is not much use on its own, since strange can cut either way. So I filtered down to outliers who are still active (a 2025 season on record) and have never been called up. That narrowed 134 to five. Three of those five sit outside MLB's top-100 prospect rankings, which is exactly the kind of overlooked profile the search was built to catch:
 
@@ -195,7 +223,7 @@ A few conclusions fall out of the analysis, framed the way I would hand them to 
 
 **The three outlier prospects look like low-risk, high-upside trade targets.** Aliendo, Doughty, and Workinger fall outside the top-100 lists and skew a bit older than the typical prospect, which could keep their acquisition cost low. They are the kind of names that get tossed into a bigger deal as a throw-in. For a team willing to bet on an unusual profile, there is upside there at a low price.
 
-**Jett Williams is the headliner.** His profile graded out close to Mike Trout's on power and speed despite a listed 5-foot-7 frame. Recently aquired this offseason by the Brewers, it's only a matter of time until he gets the call up and establishes himself as a franchise shortstop.
+**Jett Williams is the headliner.** His profile graded out close to Mike Trout's on power and speed despite a listed 5-foot-7 frame. He was recently acquired this offseason by the Brewers, and it's only a matter of time until he gets the call up and establishes himself as a franchise shortstop.
 
 **Pair the metrics with scouting context.** Every readiness score here should sit next to the things a model cannot see: the big-league club's needs, where a prospect stands on his own organization's depth chart, his service-time clock, and the health of the roster ahead of him. The metrics narrow the field. The scout still makes the call.
 
@@ -295,7 +323,7 @@ Built by **Tommy Gillan**. I hold an M.S. in Business Analytics with a Sports An
 
 This kind of project is what pulled me toward analytics in the first place. Scouting has always run on the eye and the gut, and there is real value in handing a scouting director a quantified second opinion that still leaves the final call to judgment. The modeling is only part of it. A readiness score earns its keep once it becomes a name worth putting on the trade board, or a reason to give a longer look to a player nobody else is watching.
 
-*Connect:* [LinkedIn](https://www.linkedin.com/in/tommy-gillan/) · [Email](thomasgillan63@gmail.com) · [Portfolio](https://github.com/tgillz63)
+*Connect:* [LinkedIn](https://www.linkedin.com/in/tommy-gillan/) · [Email](mailto:thomasgillan63@gmail.com) · [Portfolio](https://github.com/tgillz63)
 
 ---
 
