@@ -18,7 +18,8 @@ This project turns a fuzzy scouting question, whether a prospect is ready for th
 > ### TL;DR
 > - **Problem.** Timing a prospect's call-up is one of the trickiest calls a front office makes. Too early can dent a young hitter's confidence for years. Too late can sour the relationship and burn value. The decision runs mostly on judgment, and judgment is hard to scale across a whole farm system.
 > - **Approach.** I built an unsupervised pipeline over 2,673 minor-league hitter careers and ran four complementary methods on it: K-Means for archetypes, a composite readiness score, Ward hierarchical clustering for player comps, and an Isolation Forest for hidden gems.
-> - **Outputs.** A 0-to-100 readiness score that predicts call-up status on a held-out test set at 63% accuracy, big-league comps for prospects (one minor leaguer grades out near Mike Trout), and three under-the-radar outlier prospects sitting outside MLB's top 100.
+> - **Outputs.** A 0-to-100 readiness score that predicts call-up status on a held-out test set at 63% accuracy, big-league comps for prosp<img width="573" height="427" alt="Screenshot 2026-06-29 at 12 28 11 PM" src="https://github.com/user-attachments/assets/9a9110f9-f5a8-4f3c-a154-d1b3d0b1e4d4" />
+ects (one minor leaguer grades out near Mike Trout), and three under-the-radar outlier prospects sitting outside MLB's top 100.
 
 
 ---
@@ -131,7 +132,8 @@ Raw production tells you where a player sits today. It says nothing about which 
 
 The first method was K-Means. I scaled the features on the training careers only, chose the cluster count by silhouette score across a four-to-six range, and landed on four groups. A PCA projection down to two dimensions gave a fast visual read on how cleanly those groups separated.
 
-![PCA projection of the four minor-league hitter clusters](reports/figures/pca_clusters.png)
+<img width="570" height="429" alt="Screenshot 2026-06-29 at 12 30 08 PM" src="https://github.com/user-attachments/assets/7dd07576-9e22-4c8e-9fa1-07d8649d8654" />
+
 
 *The four K-Means clusters projected onto the first two principal components.*
 
@@ -146,7 +148,8 @@ The four archetypes, ordered by their training-set promotion rate (cluster numbe
 
 The breakdown makes baseball sense. The bats that already profile as big-league-ready, and the toolsy speed-and-contact players, get promoted at high rates. The developing-power and defense-first groups, whose value leans more on projection than current production, sit well below them.
 
-![Heatmap of cluster centroids across the hitting features](reports/figures/cluster_heatmap.png)
+<img width="478" height="366" alt="Screenshot 2026-06-29 at 12 31 20 PM" src="https://github.com/user-attachments/assets/c0868b08-738b-4490-9efc-1122031540ac" />
+
 
 *Centroid profile for each cluster. Red marks a feature sitting above the group average, blue below it.*
 
@@ -164,13 +167,6 @@ To check whether the structure holds up out of sample, the model scores a held-o
 
 The 63% deserves context rather than a victory lap. A chunk of the misses are not really misses. The model tags plenty of prospects as ready who have not been called up yet, and a good share of those are clearly big-league-caliber bats blocked by roster construction or simply too young to get the call. The score is flagging real talent that the call-up label has not caught up to. That is the readiness signal doing its job, even as it drags down the headline accuracy number.
 
-![Confusion matrix for call-up prediction at a 0.60 threshold](reports/figures/confusion_matrix.png)
-
-*Test-set call-up predictions at the 0.60 readiness threshold.*
-
-![ROC curve for the readiness score on held-out careers](reports/figures/roc_curve.png)
-
-*ROC curve for the readiness score on the held-out test careers.*
 
 ---
 
@@ -185,11 +181,11 @@ To anchor the comps, I picked two established big leaguers as reference points a
 | **Mike Trout** | Jett Williams (Brewers), Jordan Lawlar (Diamondbacks) |
 | **Elvis Andrus** | Nick Morabito (Mets), Homer Bush Jr. (Padres) |
 
-![Dendrogram of the careers closest to Mike Trout](reports/figures/trout_dendrogram.png)
+<img width="579" height="285" alt="Screenshot 2026-06-29 at 12 32 44 PM" src="https://github.com/user-attachments/assets/5694eb3a-c570-41ec-ae89-b3992b224b95" />
 
 *Ward dendrogram of the 25 careers nearest to Mike Trout.*
 
-![Dendrogram of the careers closest to Elvis Andrus](reports/figures/andrus_dendrogram.png)
+<img width="605" height="312" alt="Screenshot 2026-06-29 at 12 33 52 PM" src="https://github.com/user-attachments/assets/70bedcd6-81a3-4f05-8e3c-57b25b30054e" />
 
 *Ward dendrogram of the 25 careers nearest to Elvis Andrus.*
 
@@ -201,7 +197,7 @@ There is a built-in catch worth naming. When the anchor is an all-time talent li
 
 The last method went looking for prospects who fit no mold at all. An Isolation Forest scored every player on statistical uniqueness and flagged the most unusual 5%, which came to 134 players.
 
-![Isolation Forest uniqueness map of every hitter career](reports/figures/isolation_forest_map.png)
+<img width="412" height="295" alt="Screenshot 2026-06-29 at 12 34 49 PM" src="https://github.com/user-attachments/assets/5885a95c-0620-4d7e-afef-b772f120cd85" />
 
 *Every career projected by PCA and shaded by outlier score, with the most unusual profiles in red.*
 
