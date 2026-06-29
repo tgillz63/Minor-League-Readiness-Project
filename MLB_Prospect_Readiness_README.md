@@ -1,4 +1,4 @@
-# MLB Prospect Call-Up Readiness Engine
+# MLB Prospect Call-Up Readiness Project
 
 **Unsupervised machine learning for minor-league hitter evaluation, 2007-2025.**
 
@@ -15,11 +15,10 @@ This project turns a fuzzy scouting question, whether a prospect is ready for th
 
 ---
 
-> ### TL;DR
+> ### Too Long; Didn't Read
 > - **Problem.** Timing a prospect's call-up is one of the trickiest calls a front office makes. Too early can dent a young hitter's confidence for years. Too late can sour the relationship and burn value. The decision runs mostly on judgment, and judgment is hard to scale across a whole farm system.
 > - **Approach.** I built an unsupervised pipeline over 2,673 minor-league hitter careers and ran four complementary methods on it: K-Means for archetypes, a composite readiness score, Ward hierarchical clustering for player comps, and an Isolation Forest for hidden gems.
-> - **Outputs.** A 0-to-100 readiness score that predicts call-up status on a held-out test set at 63% accuracy, big-league comps for prosp<img width="573" height="427" alt="Screenshot 2026-06-29 at 12 28 11 PM" src="https://github.com/user-attachments/assets/9a9110f9-f5a8-4f3c-a154-d1b3d0b1e4d4" />
-ects (one minor leaguer grades out near Mike Trout), and three under-the-radar outlier prospects sitting outside MLB's top 100.
+> - **Outputs.** A 0-to-100 readiness score that predicts call-up status on a held-out test set at 63% accuracy, big-league comps for prospects (one minor leaguer grades out near Mike Trout), and three under-the-radar outlier prospects sitting outside MLB's top 100.
 
 
 ---
