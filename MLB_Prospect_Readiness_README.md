@@ -166,7 +166,7 @@ To anchor the comps, I picked two established big leaguers as reference points a
 
 | Reference Player | Closest Prospect Comps |
 |---|---|
-| **Mike Trout** | Jett Williams (Mets), Jordan Lawlar (Diamondbacks) |
+| **Mike Trout** | Jett Williams (Brewers), Jordan Lawlar (Diamondbacks) |
 | **Elvis Andrus** | Nick Morabito (Mets), Homer Bush Jr. (Padres) |
 
 There is a built-in catch worth naming. When the anchor is an all-time talent like Trout, his nearest neighbors skew heavily toward other established big leaguers, which leaves only a handful of true minor-league comps in the mix. The method works better anchored against solid regulars than against superstars, and that is something I would want to design around in a future version.
@@ -195,7 +195,7 @@ A few conclusions fall out of the analysis, framed the way I would hand them to 
 
 **The three outlier prospects look like low-risk, high-upside trade targets.** Aliendo, Doughty, and Workinger fall outside the top-100 lists and skew a bit older than the typical prospect, which could keep their acquisition cost low. They are the kind of names that get tossed into a bigger deal as a throw-in. For a team willing to bet on an unusual profile, there is upside there at a low price.
 
-**Jett Williams is the headliner.** His profile graded out close to Mike Trout's on power and speed despite a listed 5-foot-7 frame. With Francisco Lindor signed at shortstop through 2031, Williams' path in New York runs through center field or second base, so a rival could lean on doubts about that defensive move to pry him loose.
+**Jett Williams is the headliner.** His profile graded out close to Mike Trout's on power and speed despite a listed 5-foot-7 frame. Recently aquired this offseason by the Brewers, it's only a matter of time until he gets the call up and establishes himself as a franchise shortstop.
 
 **Pair the metrics with scouting context.** Every readiness score here should sit next to the things a model cannot see: the big-league club's needs, where a prospect stands on his own organization's depth chart, his service-time clock, and the health of the roster ahead of him. The metrics narrow the field. The scout still makes the call.
 
@@ -208,7 +208,7 @@ I would rather lay out where this falls short than have a reader trip over it.
 - **The target is a proxy, and a noisy one.** "Called up" stands in for "ready," but call-ups hinge on roster math, money, and injuries as much as talent. Any model built on that label inherits the noise.
 - **AA/AAA-only inflates the base rates.** Restricting to the top two minor-league levels means everyone in the pool has already cleared a high bar, which pushes promotion rates up, especially in the weaker clusters, and makes the never-called-up group at those levels a little unusual.
 - **Readiness and call-up share DNA.** The score is built from cluster promotion rates, then validated by predicting call-ups. That is a fair test of whether the cluster structure holds across time, but it leans on the same relationship it learned from, so the 63% reads more as temporal stability than as an independent discovery.
-- **The pipeline is offense-only.** It sees hitting and base-running, not defense or positional value. A glove-first prospect, or a strong bat blocked at a crowded position, is something the model cannot weigh, which the Jett Williams defensive question puts on display.
+- **The pipeline is offense-only.** It sees hitting and base-running, not defense or positional value. A glove-first prospect, or a strong bat blocked at a crowded position, is something the model cannot weigh.
 - **Trajectory is shaky for short careers.** A single-season player gets a flat trajectory by construction, and slopes built on two or three years are noisy.
 - **Outlier flags need a quality gate.** The Isolation Forest measures how unusual a player is in either direction. Pairing it with the readiness score handles that here, but the method on its own says nothing about whether unusual is good or bad.
 - **Clustering is sensitive to its setup.** Feature choice, scaling, and the K search range all steer the cluster identities, and the silhouette search only spanned four to six clusters.
@@ -223,8 +223,6 @@ I would rather lay out where this falls short than have a reader trip over it.
 - **Go real-time.** A version that refreshes with current minor-league performance, big-league results, and injury news would turn a static study into a live scouting tool.
 - **Fold in defense and position.** Adding fielding value and positional scarcity would close the offense-only gap and sharpen the trade-target reads.
 - **Reach back before 2007.** Extending the history would deepen the comp pool, assuming the older minor-league data can be sourced.
-- **Calibrate the readiness score.** Turning it into a calibrated probability would make the 0-to-100 number mean the same thing from one player to the next.
-
 ---
 
 ## 13. Tech Stack
@@ -297,7 +295,7 @@ Built by **Tommy Gillan**. I hold an M.S. in Business Analytics with a Sports An
 
 This kind of project is what pulled me toward analytics in the first place. Scouting has always run on the eye and the gut, and there is real value in handing a scouting director a quantified second opinion that still leaves the final call to judgment. The modeling is only part of it. A readiness score earns its keep once it becomes a name worth putting on the trade board, or a reason to give a longer look to a player nobody else is watching.
 
-*Connect:* [LinkedIn](#) · [Email](#) · [Portfolio](#)
+*Connect:* [LinkedIn](https://www.linkedin.com/in/tommy-gillan/) · [Email](thomasgillan63@gmail.com) · [Portfolio](https://github.com/tgillz63)
 
 ---
 
